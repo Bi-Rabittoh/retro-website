@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BiRabittoh's cool website</title>
+    <link rel="stylesheet" href="res/style.css">
+    <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet" />
+</head>
+
+<body style='background-image: url("res/img/background.jpg"); height: 100%;'>
+    <div id="main-container">
+        <div class="center" style="padding-top:30px;">
+            <a data-page="about" id="aTitle">
+                <img src="res/gif/text.gif" alt="BiRabittoh's cool website" class="hover-tilt">
+            </a>
+        </div>
+        <div id="background-orange">
+            <h1>My favorite things:</h1>
+            <a data-page="earthbound">
+                <div class="menu-item">
+                    <span>Earthbound</span>
+                    <img src="res/gif/ness1.gif">
+                </div>
+            </a>
+            <a data-page="dragonquest">
+                <div class="menu-item">
+                    <span>Dragon Quest</span>
+                    <img src="res/gif/slime1.gif">
+                </div>
+            </a>
+            <a data-page="zelda">
+                <div class="menu-item">
+                    <span>Zelda</span>
+                    <img src="res/gif/linkmc.gif">
+                </div>
+            </a>
+            <a data-page="indies">
+                <div class="menu-item">
+                    <span>Indies</span>
+                    <img src="res/gif/tutoriel.gif">
+                </div>
+            </a>
+            <a data-page="anime">
+                <div class="menu-item">
+                    <span>Anime</span>
+                    <img src="res/gif/jojo.gif">
+                </div>
+            </a>
+            <a data-page="gf">
+                <div class="menu-item">
+                    <span>My perfect GF</span>
+                    <img src="res/gif/kirby.gif">
+                </div>
+            </a>
+        </div>
+        <!--<iframe id="content-iframe" name="content" src="pages/about.html" onload="this.height = (this.contentWindow.document.body.scrollHeight + 43) + 'px';"></iframe>-->
+        <iframe id="content-iframe" name="content" src="pages/about.html"></iframe>
+    </div>
+    <div id="music-player-base" onclick="playPause()">
+        <div id="music-player-overlay">
+        </div>
+
+        <audio controls loop id="music"><source id="music-source" src="res/mus/Awesome Rap Beat.opus"></audio>
+    </div>
+
+    <script>
+        const menu_div = document.getElementById("background-orange");
+        const iframe = document.getElementById("content-iframe");
+        const music = document.getElementById("music");
+        const source = document.getElementById("music-source");
+        const music_base = document.getElementById("music-player-base");
+
+        const tracks = {
+            "about": "AwesomeRapBeat.opus",
+            "anime": "WeFellIntoaDream.opus",
+            "dragonquest": "ForestFeast.opus",
+            "earthbound": "GoodtimeRock.opus",
+            "gf": "KatiesKuddlyKatKorner.opus",
+            "indies": "Earmint.opus",
+            "zelda": "ForestFeast.opus",
+        }
+
+        let play = false;
+        let currentPage = "about"
+
+        function goToPage(page) {
+            if(currentPage == page)
+                return
+            iframe.src = "pages/" + page + ".html";
+
+            const newTrack = tracks[page];
+
+            if(newTrack != tracks[currentPage]){
+                source.src = "res/mus/" + newTrack;
+                music.pause();
+                music.load();
+                if (play)
+                    music.play();
+            }
+                
+            currentPage = page;
+        }
+        const title = document.getElementById("aTitle");
+        title.addEventListener("click", () => goToPage(title.getAttribute("data-page")));
+        [ ...menu_div.childNodes ].forEach(element => {
+            try{
+                const page = element.getAttribute("data-page");
+                if (page){
+                    element.addEventListener("click", () => goToPage(page));
+                }
+            } catch {}
+        });
+
+
+        function playPause() {
+            if (play){
+                music_base.style.backgroundImage = "url('res/img/player_pause.png')";
+                music.pause();
+                play = false
+            }
+            else {
+                music_base.style.backgroundImage = "url('res/img/player_play.png')";
+                music.volume = 0.1;
+                music.play();
+                play = true
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

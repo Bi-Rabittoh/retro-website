@@ -1,0 +1,90 @@
+html {
+    font-family: "Iosevka Web";
+    color: white;
+    cursor: url("cur/cursor2x.png"), auto;
+}
+
+#content-iframe {
+    height: inherit;
+    width: 100%;
+    border: 0px;
+    cursor: url("cur/cursor2x.png"), auto;
+}
+
+a {
+    cursor: url("cur/pointer2x.png"), auto;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+.center {
+    text-align: center;
+}
+
+.hover-tilt {
+    transition: transform .1s ease-in-out;
+    rotate: -3deg;
+}
+.hover-tilt:hover {
+    transform: rotate(3deg);
+}
+
+#main-container {
+    /* width: calc(100% / 2); */
+    height: 100%;
+    width: 800px;
+    margin: auto;
+}
+
+#background-orange {
+    /* background-color: rgb(255, 170, 60); */
+    background-image: url("img/orange-banner.jpg");
+    background-size: cover;
+    color: white;
+    text-shadow: 1px 1px #000000;
+    padding-bottom:10px;
+}
+
+#background-orange a {
+    color: white;
+    text-decoration: none;
+}
+
+#background-orange h1 {
+    margin-left: 18px;
+    padding-top: 10px;
+}
+
+.menu-item {
+    text-align: center;
+    display: inline-block;
+    width: 110px;
+}
+
+.menu-item img {
+    height: 50px;
+    margin: auto;
+    display: block;
+}
+
+#music-player-base {
+    position: fixed;
+    bottom: 0;
+    left: 5px;
+    width: 114px;
+    height: 66px;
+    background-color: #141414;
+    background-image: url("img/player_pause.png");
+    background-size: contain;
+    image-rendering: pixelated;
+}
+
+#music-player-overlay {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/player_overlay.png);
+    cursor: url("cur/pointer2x.png"), auto;
+    background-size: contain;
+}
