@@ -6,6 +6,7 @@ const music_song = document.getElementById("music-player-song");
 const music_song_text = document.getElementById("song-text");
 const clickAudio1 = new Audio(url="res/sfx/os/click2.ogg");
 const clickAudio2 = new Audio(url="res/sfx/os/click1.ogg");
+const loadSpeed = 2;
 
 const tracks = {
     "awesome": {
@@ -58,37 +59,51 @@ const page_tracks = {
 
 let first = false;
 let play = false;
+let controlsEnabled = false;
 let currentPage = "about";
 let currentTrack = "";
 let showTimeout, hideTimeout;
 
-function playAudio(audio){
-    audio.volume = 0.1;
-    audio.currentTime = 0;
-    audio.play();
+function firstPlay(){
+    if(first) return;
+    document.getElementById("music-player").style.bottom = "0";
+    music.volume = 0.1;
+    controlsEnabled = true;
+    playPause(false, page_tracks[currentPage]);
+    first = true;
+}
+
+function loadIFrame(callback){
+    iframe.contentWindow.start_loading(speed=loadSpeed, not_allowed, callback);
 }
 
 function firstClickPlay(element) {
+    const overlay = document.getElementById("overlay");
+    if(overlay) {
+        overlay.remove();
+        slow_load(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
+    }
+
     click1 = clickAudio1 || parent.clickAudio1;
     click2 = clickAudio2 || parent.clickAudio2;
 
     playAudio(click1)
     element.onmousedown = () => playAudio(click1);
     element.onmouseup = () => playAudio(click2);
-
-    if(first) return;
-    document.getElementById("music-player").style.bottom = "0";
-    music.volume = 0.1;
-    playPause(false, page_tracks[currentPage]);
-    first = true;
 }
 
 function goToPage(page) {
-    if(currentPage == page)
-        return
+    if (!controlsEnabled || currentPage == page) return
+
+    music.pause()
+    controlsEnabled = false;
     iframe.src = "pages/" + page + ".html";
-    playPause(!play, page_tracks[page])
+    
+    iframe.addEventListener("load", () => { loadIFrame(()=> { controlsEnabled = true; playPause(!play, page_tracks[page]); }); }, {once: true})
+
     currentPage = page;
+    
+    
 }
 
 function formatTrack(track) {
@@ -115,6 +130,8 @@ function hideTitle(){
 
 function playPause(toggle=play, track=currentTrack) {
 
+    if (!controlsEnabled)
+        return;
     if (toggle){
         music_base.classList.remove("player-play");
         music.pause();

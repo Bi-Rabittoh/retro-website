@@ -1,8 +1,8 @@
 const loadAudio = [
-    new Audio(url="res/sfx/os/loadelement1.ogg"),
-    new Audio(url="res/sfx/os/loadelement2.ogg"),
-    new Audio(url="res/sfx/os/loadelement3.ogg"),
-    new Audio(url="res/sfx/os/loadelement4.ogg")
+    new Audio(url="../res/sfx/os/loadelement1.ogg"),
+    new Audio(url="../res/sfx/os/loadelement2.ogg"),
+    new Audio(url="../res/sfx/os/loadelement3.ogg"),
+    new Audio(url="../res/sfx/os/loadelement4.ogg")
 ]
 const not_allowed = ["AUDIO", "META", "TITLE", "LINK", "SOURCE", "SCRIPT", "BR"];
 
@@ -17,32 +17,37 @@ function playAudio(audio){
     audio.play();
 }
 
-function slow_load(speed=10, not_allowed=[], callback) {
-    
-    function onFinish(node, initial_display){
-        node.style.display = initial_display;
+const all = document.getElementsByTagName("*");
+let total = 0;
+for (i in all) {
+    const node = all[i];
+    if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
+        total++;
+        node.setAttribute("data-display", node.style.display);
+        node.style.display = "none";
+    }
+}
+
+function start_loading(speed=parent.loadSpeed, not_allowed=[], callback) {
+
+    function onNodeLoaded(node){
+        node.style.display = node.getAttribute("data-display");
         counter++;
         ratio = counter / total * 100;
-        
         randomAudio();
     
         if (ratio >= 100 && callback)
             callback()
     }
     
-    const all = document.getElementsByTagName("*");
     let counter = 0;
-    let total = 0;
     let i = 0;
     for (element in all) {
-
         const node = all[element];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
+
             i += getRandomInt(250 / speed, 500 / speed);
-            total++;
-            const initial_display = node.style.display;
-            node.style.display = "none";
-            setTimeout(() => { onFinish(node, initial_display);}, i);
+            setTimeout(() => { onNodeLoaded(node);}, i);
         }
     }
 }
@@ -51,3 +56,4 @@ function randomAudio(){
     const random_audio = getRandomInt(0, loadAudio.length - 1);
     playAudio(loadAudio[random_audio]);
 }
+
