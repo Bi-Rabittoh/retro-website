@@ -1,18 +1,18 @@
 html {
     font-family: "Iosevka Web";
     color: white;
-    cursor: url("cur/cursor2x.png"), auto;
+    cursor: url("cur/cursor2x.cur"), auto;
 }
 
 #content-iframe {
     height: inherit;
     width: 100%;
     border: 0px;
-    cursor: url("cur/cursor2x.png"), auto;
+    cursor: url("cur/cursor2x.cur"), auto;
 }
 
 a {
-    cursor: url("cur/pointer2x.png"), auto;
+    cursor: url("cur/pointer2x.cur"), auto;
 }
 
 img {
@@ -25,7 +25,7 @@ img {
 
 .hover-tilt {
     transition: transform .1s ease-in-out;
-    rotate: -3deg;
+    rotate: -1.5deg;
 }
 .hover-tilt:hover {
     transform: rotate(3deg);
@@ -38,12 +38,15 @@ img {
     margin: auto;
 }
 
+.shadow {
+    text-shadow: 1px 1px #000000;
+}
+
 #background-orange {
     /* background-color: rgb(255, 170, 60); */
     background-image: url("img/orange-banner.jpg");
     background-size: cover;
     color: white;
-    text-shadow: 1px 1px #000000;
     padding-bottom:10px;
 }
 
@@ -69,22 +72,51 @@ img {
     display: block;
 }
 
-#music-player-base {
+#music-player {
     position: fixed;
     bottom: 0;
     left: 5px;
+    height: 66px;
+    image-rendering: pixelated;
+}
+
+#music-player-base {
+    float: left;
     width: 114px;
     height: 66px;
     background-color: #141414;
     background-image: url("img/player_pause.png");
     background-size: contain;
-    image-rendering: pixelated;
+}
+
+#music-player-song {
+    position: relative;
+    float: right;
+    height: 66px;
+    width: 700px;
+    margin-left: 5px;
+    background-color: #141414;
+    background-image: url("img/player_song.png");
+    background-size: 100% 100%;
+    transition: top .4s ease-in-out;
+}
+
+#song-text {
+    position: relative;
+    font-weight: 700;
+    color: black;
+    margin: 10px;
+    top: 30%;
+}
+
+.player-play {
+    background-image: url("img/player_play.png")!important;
 }
 
 #music-player-overlay {
     width: 100%;
     height: 100%;
     background-image: url(img/player_overlay.png);
-    cursor: url("cur/pointer2x.png"), auto;
+    cursor: url("cur/pointer2x.cur"), auto;
     background-size: contain;
 }

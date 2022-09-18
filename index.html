@@ -17,7 +17,7 @@
                 <img src="res/gif/text.gif" alt="BiRabittoh's cool website" class="hover-tilt">
             </a>
         </div>
-        <div id="background-orange">
+        <div id="background-orange" class="shadow">
             <h1>My favorite things:</h1>
             <a data-page="earthbound">
                 <div class="menu-item">
@@ -51,7 +51,7 @@
             </a>
             <a data-page="gf">
                 <div class="menu-item">
-                    <span>My perfect GF</span>
+                    <span>My perfect gf</span>
                     <img src="res/gif/kirby.gif">
                 </div>
             </a>
@@ -59,77 +59,16 @@
         <!--<iframe id="content-iframe" name="content" src="pages/about.html" onload="this.height = (this.contentWindow.document.body.scrollHeight + 43) + 'px';"></iframe>-->
         <iframe id="content-iframe" name="content" src="pages/about.html"></iframe>
     </div>
-    <div id="music-player-base" onclick="playPause()">
-        <div id="music-player-overlay">
+    <div id="music-player">
+        <div id="music-player-base" onclick="playPause()">
+            <div id="music-player-overlay"></div>
+            <audio controls loop id="music"><source id="music-source" src="res/mus/AwesomeRapBeat.opus"></audio>
         </div>
-
-        <audio controls loop id="music"><source id="music-source" src="res/mus/AwesomeRapBeat.opus"></audio>
+        <div id="music-player-song" style="top: 100%;">
+            <span id="song-text">Jay Tholen - Awesome Rap Beat (Hypnospace Outlaw Original Soundtrack, Vol. 2)</span>
+        </div>
     </div>
-
-    <script>
-        const menu_div = document.getElementById("background-orange");
-        const iframe = document.getElementById("content-iframe");
-        const music = document.getElementById("music");
-        const source = document.getElementById("music-source");
-        const music_base = document.getElementById("music-player-base");
-
-        const tracks = {
-            "about": "AwesomeRapBeat.opus",
-            "anime": "WeFellIntoaDream.opus",
-            "dragonquest": "ForestFeast.opus",
-            "earthbound": "GoodtimeRock.opus",
-            "gf": "KatiesKuddlyKatKorner.opus",
-            "indies": "Earmint.opus",
-            "zelda": "ForestFeast.opus",
-        }
-
-        let play = false;
-        let currentPage = "about"
-
-        function goToPage(page) {
-            if(currentPage == page)
-                return
-            iframe.src = "pages/" + page + ".html";
-
-            const newTrack = tracks[page];
-
-            if(newTrack != tracks[currentPage]){
-                source.src = "res/mus/" + newTrack;
-                music.pause();
-                music.load();
-                if (play)
-                    music.play();
-            }
-                
-            currentPage = page;
-        }
-        const title = document.getElementById("aTitle");
-        title.addEventListener("click", () => goToPage(title.getAttribute("data-page")));
-        [ ...menu_div.childNodes ].forEach(element => {
-            try{
-                const page = element.getAttribute("data-page");
-                if (page){
-                    element.addEventListener("click", () => goToPage(page));
-                }
-            } catch {}
-        });
-
-
-        function playPause() {
-            if (play){
-                music_base.style.backgroundImage = "url('res/img/player_pause.png')";
-                music.pause();
-                play = false
-            }
-            else {
-                music_base.style.backgroundImage = "url('res/img/player_play.png')";
-                music.volume = 0.1;
-                music.play();
-                play = true
-            }
-        }
-        
-    </script>
+    <script src="res/script.js"></script>
 </body>
 
 </html>
