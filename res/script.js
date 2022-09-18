@@ -81,7 +81,9 @@ function firstClickPlay(element) {
     const overlay = document.getElementById("overlay");
     if(overlay) {
         overlay.remove();
-        slow_load(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
+        hide_all();
+        start_loading(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
+        //slow_load(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
     }
 
     click1 = clickAudio1 || parent.clickAudio1;
@@ -92,18 +94,18 @@ function firstClickPlay(element) {
     element.onmouseup = () => playAudio(click2);
 }
 
+function frameLoadedCallback(page) {
+    controlsEnabled = true;
+    playPause(!play, page_tracks[page]);
+}
+
 function goToPage(page) {
     if (!controlsEnabled || currentPage == page) return
 
     music.pause()
     controlsEnabled = false;
     iframe.src = "pages/" + page + ".html";
-    
-    iframe.addEventListener("load", () => { loadIFrame(()=> { controlsEnabled = true; playPause(!play, page_tracks[page]); }); }, {once: true})
-
     currentPage = page;
-    
-    
 }
 
 function formatTrack(track) {
