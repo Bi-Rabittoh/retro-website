@@ -1,4 +1,3 @@
-const menu_div = document.getElementById("background-orange");
 const iframe = document.getElementById("content-iframe");
 const music = document.getElementById("music");
 const source = document.getElementById("music-source");
@@ -57,33 +56,19 @@ const page_tracks = {
 
 let play = false;
 let currentPage = "about";
-let currentTrack = page_tracks[currentPage];
+let currentTrack = "";
 let timeout;
 
-function firstMusicPlay() {
-    playPause(false);
-    document.removeEventListener('click', firstMusicPlay);
+function firstClickPlay(element) {
+    playPause(false, page_tracks[currentPage]);
+    element.onclick = null;
 }
-document.addEventListener('click', firstMusicPlay);
 
 function goToPage(page) {
     if(currentPage == page)
         return
     iframe.src = "pages/" + page + ".html";
-
-    const newTrack = page_tracks[page];
-
-    if(newTrack != currentTrack){
-        currentTrack = newTrack;
-
-        source.src = "res/mus/" + tracks[newTrack].file_name;
-        music.load();
-        if (play) {
-            music.play();
-            showTitle();
-        }
-    }
-        
+    playPause(!play, page_tracks[page])
     currentPage = page;
 }
 
@@ -92,15 +77,14 @@ function formatTrack(track) {
 }
 
 function showTitle(){
+    if (!currentTrack) return;
     clearTimeout(timeout);
     music_song_text.textContent = formatTrack(tracks[currentTrack]);
     music_song.style.top = "0";
-    timeout = setTimeout(() => {
-        music_song.style.top = "100%";
-    }, 3_000);
+    timeout = setTimeout(() => { music_song.style.top = "100%"; }, 3_000);
 }
 
-function playPause(toggle=play) {
+function playPause(toggle=play, track=currentTrack) {
     if (toggle){
         music_base.classList.remove("player-play");
         music.pause();
@@ -109,20 +93,13 @@ function playPause(toggle=play) {
     else {
         music_base.classList.add("player-play");
         music.volume = 0.1;
-        music.play();
-        play = true
+        if (track != currentTrack) {
+            currentTrack = track;
+            source.src = "res/mus/" + tracks[currentTrack].file_name;
+            music.load();
+        }
         showTitle();
+        music.play().catch(() => {});
+        play = true
     }
 }
-
-// page logic
-const title = document.getElementById("aTitle");
-title.addEventListener("click", () => goToPage(title.getAttribute("data-page")));
-[ ...menu_div.childNodes ].forEach(element => {
-    try{
-        const page = element.getAttribute("data-page");
-        if (page){
-            element.addEventListener("click", () => goToPage(page));
-        }
-    } catch {}
-});

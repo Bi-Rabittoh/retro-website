@@ -1,5 +1,10 @@
+@font-face {
+    font-family: '04b_03';
+    src: url('ttf/04b03.ttf')  format('truetype');
+}
+
 html {
-    font-family: "Iosevka Web";
+    font-family: "04b_03";
     color: white;
     cursor: url("cur/cursor2x.cur"), auto;
 }
@@ -42,28 +47,27 @@ img {
     text-shadow: 1px 1px #000000;
 }
 
-#background-orange {
-    /* background-color: rgb(255, 170, 60); */
+#menu-div {
+    text-align: center;
     background-image: url("img/orange-banner.jpg");
     background-size: cover;
     color: white;
-    padding-bottom:10px;
+    padding:15px;
 }
 
-#background-orange a {
+#menu-div a {
     color: white;
     text-decoration: none;
 }
 
-#background-orange h1 {
+#menu-div h1 {
     margin-left: 18px;
-    padding-top: 10px;
 }
 
 .menu-item {
     text-align: center;
     display: inline-block;
-    width: 110px;
+    width: 118px;
 }
 
 .menu-item img {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%">
+<html lang="en" style="height: 100%" onclick="firstClickPlay(this);">
 
 <head>
     <meta charset="UTF-8">
@@ -13,43 +13,43 @@
 <body style='background-image: url("res/img/background.jpg"); height: 100%;'>
     <div id="main-container">
         <div class="center" style="padding-top:30px;">
-            <a data-page="about" id="aTitle">
+            <a onclick="goToPage('about')">
                 <img src="res/gif/text.gif" alt="BiRabittoh's cool website" class="hover-tilt">
             </a>
         </div>
-        <div id="background-orange" class="shadow">
-            <h1>My favorite things:</h1>
-            <a data-page="earthbound">
+        <div id="menu-div" class="shadow">
+            <h1 style="margin-top:0px;">My favorite things:</h1>
+            <a onclick="goToPage('earthbound')">
                 <div class="menu-item">
                     <span>Earthbound</span>
                     <img src="res/gif/ness1.gif">
                 </div>
             </a>
-            <a data-page="dragonquest">
-                <div class="menu-item">
-                    <span>Dragon Quest</span>
-                    <img src="res/gif/slime1.gif">
-                </div>
-            </a>
-            <a data-page="zelda">
+            <a onclick="goToPage('zelda')">
                 <div class="menu-item">
                     <span>Zelda</span>
                     <img src="res/gif/linkmc.gif">
                 </div>
             </a>
-            <a data-page="indies">
+            <a onclick="goToPage('dragonquest')">
+                <div class="menu-item">
+                    <span>Dragon Quest</span>
+                    <img src="res/gif/slime1.gif">
+                </div>
+            </a>
+            <a onclick="goToPage('indies')">
                 <div class="menu-item">
                     <span>Indies</span>
                     <img src="res/gif/tutoriel.gif">
                 </div>
             </a>
-            <a data-page="anime">
+            <a onclick="goToPage('anime')">
                 <div class="menu-item">
                     <span>Anime</span>
                     <img src="res/gif/jojo.gif">
                 </div>
             </a>
-            <a data-page="gf">
+            <a onclick="goToPage('gf')">
                 <div class="menu-item">
                     <span>My perfect gf</span>
                     <img src="res/gif/kirby.gif">
@@ -62,7 +62,7 @@
     <div id="music-player">
         <div id="music-player-base" onclick="playPause()">
             <div id="music-player-overlay"></div>
-            <audio controls loop id="music"><source id="music-source" src="res/mus/AwesomeRapBeat.opus"></audio>
+            <audio controls loop id="music"><source id="music-source" src="#"></audio>
         </div>
         <div id="music-player-song" style="top: 100%;">
             <span id="song-text">Jay Tholen - Awesome Rap Beat (Hypnospace Outlaw Original Soundtrack, Vol. 2)</span>
