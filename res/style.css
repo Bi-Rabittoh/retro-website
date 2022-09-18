@@ -53,6 +53,7 @@ img {
     background-size: cover;
     color: white;
     padding:15px;
+    margin-top: -18px;
 }
 
 #menu-div a {
@@ -78,10 +79,10 @@ img {
 
 #music-player {
     position: fixed;
-    bottom: 0;
     left: 5px;
     height: 66px;
     image-rendering: pixelated;
+    transition: bottom .4s ease-in-out;
 }
 
 #music-player-base {

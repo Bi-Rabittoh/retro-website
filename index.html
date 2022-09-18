@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%" onclick="firstClickPlay(this);">
+<html lang="en" style="height: 100%" onmousedown="firstClickPlay(this);">
 
 <head>
     <meta charset="UTF-8">
@@ -59,7 +59,7 @@
         <!--<iframe id="content-iframe" name="content" src="pages/about.html" onload="this.height = (this.contentWindow.document.body.scrollHeight + 43) + 'px';"></iframe>-->
         <iframe id="content-iframe" name="content" src="pages/about.html"></iframe>
     </div>
-    <div id="music-player">
+    <div id="music-player" onmouseenter="showTitle()" onmouseleave="hideTitle()" style="bottom: -100%">
         <div id="music-player-base" onclick="playPause()">
             <div id="music-player-overlay"></div>
             <audio controls loop id="music"><source id="music-source" src="#"></audio>
