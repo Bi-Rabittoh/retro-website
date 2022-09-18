@@ -93,7 +93,7 @@ img {
     position: relative;
     float: right;
     height: 66px;
-    width: 700px;
+    min-width: 700px;
     margin-left: 5px;
     background-color: #141414;
     background-image: url("img/player_song.png");
