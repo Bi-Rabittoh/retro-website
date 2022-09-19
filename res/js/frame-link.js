@@ -17,7 +17,7 @@ var mainFrame;
 var firstLoad = true;
 var updateTitle = true;
 var pageParam = "z";
-var titlePrefix = "";
+var titlePrefix = "BiRabittoh | ";
 var hitCounterFunction = undefined;
 
 //Event to handle first page load - Also sets up the mainFrame
