@@ -1,8 +1,8 @@
 const loadAudio = [
-    new Audio(url="../res/sfx/os/loadelement1.ogg"),
-    new Audio(url="../res/sfx/os/loadelement2.ogg"),
-    new Audio(url="../res/sfx/os/loadelement3.ogg"),
-    new Audio(url="../res/sfx/os/loadelement4.ogg")
+    new Audio(url = window.location.origin + "/res/sfx/os/loadelement1.ogg"),
+    new Audio(url = window.location.origin + "/res/sfx/os/loadelement2.ogg"),
+    new Audio(url = window.location.origin + "/res/sfx/os/loadelement3.ogg"),
+    new Audio(url = window.location.origin + "/res/sfx/os/loadelement4.ogg")
 ]
 const not_allowed = ["AUDIO", "META", "TITLE", "LINK", "SOURCE", "SCRIPT", "BR"];
 
@@ -21,7 +21,7 @@ const all = document.getElementsByTagName("*");
 let total = 0;
 
 function hide_all() {
-    
+
     for (i in all) {
         const node = all[i];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
