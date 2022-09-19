@@ -1,4 +1,4 @@
-const iframe = document.getElementById("content-iframe");
+const iframe = document.getElementById("mainframe");
 const music = document.getElementById("music");
 const source = document.getElementById("music-source");
 const music_base = document.getElementById("music-player-base");

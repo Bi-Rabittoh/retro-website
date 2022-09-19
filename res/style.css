@@ -21,7 +21,7 @@ html {
     cursor: url("cur/cursor2x.cur"), auto;
 }
 
-#content-iframe {
+#mainframe {
     height: inherit;
     width: 100%;
     border: 0px;
