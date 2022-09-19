@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BiRabittoh's cool website</title>
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="res/css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🥭</text></svg>">
-    <script src="https://melonking.net/scripts/frame-link.js"></script>
 </head>
 
 <body style='background-image: url("res/img/background.jpg"); height: 100%;'>
@@ -67,19 +66,21 @@
     <div id="music-player" onmouseenter="showTitle()" onmouseleave="hideTitle()" style="bottom: -100%">
         <div id="music-player-base" onclick="playPause()">
             <div id="music-player-overlay"></div>
-            <audio loop id="music"><source id="music-source" src="#"></audio>
         </div>
         <div id="music-player-song" style="top: 100%;">
             <span id="song-text">Jay Tholen - Awesome Rap Beat (Hypnospace Outlaw Original Soundtrack, Vol. 2)</span>
         </div>
     </div>
+    
+    <audio loop id="music"><source id="music-source" src="#"></audio>
     <audio id="loadelement1"><source src="res/sfx/os/loadelement1.ogg"></audio>
     <audio id="loadelement2"><source src="res/sfx/os/loadelement2.ogg"></audio>
     <audio id="loadelement3"><source src="res/sfx/os/loadelement3.ogg"></audio>
     <audio id="loadelement4"><source src="res/sfx/os/loadelement4.ogg"></audio>
 
-    <script src="res/slow_load.js"></script>
-    <script src="res/script.js"></script>
+    <script src="res/js/slow_load.js"></script>
+    <script src="res/js/script.js"></script>
+    <script src="res/js/frame-link.js"></script>
 </body>
 
 </html>
