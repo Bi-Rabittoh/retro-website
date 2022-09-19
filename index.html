@@ -67,12 +67,17 @@
     <div id="music-player" onmouseenter="showTitle()" onmouseleave="hideTitle()" style="bottom: -100%">
         <div id="music-player-base" onclick="playPause()">
             <div id="music-player-overlay"></div>
-            <audio controls loop id="music"><source id="music-source" src="#"></audio>
+            <audio loop id="music"><source id="music-source" src="#"></audio>
         </div>
         <div id="music-player-song" style="top: 100%;">
             <span id="song-text">Jay Tholen - Awesome Rap Beat (Hypnospace Outlaw Original Soundtrack, Vol. 2)</span>
         </div>
     </div>
+    <audio id="loadelement1"><source src="res/sfx/os/loadelement1.ogg"></audio>
+    <audio id="loadelement2"><source src="res/sfx/os/loadelement2.ogg"></audio>
+    <audio id="loadelement3"><source src="res/sfx/os/loadelement3.ogg"></audio>
+    <audio id="loadelement4"><source src="res/sfx/os/loadelement4.ogg"></audio>
+
     <script src="res/slow_load.js"></script>
     <script src="res/script.js"></script>
 </body>

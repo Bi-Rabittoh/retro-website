@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 function playAudio(audio){
     audio.volume = 0.1;
     audio.currentTime = 0;
-    audio.play();
+    audio.play().catch(()=>{});
 }
 
 const all = document.getElementsByTagName("*");

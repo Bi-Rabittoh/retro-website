@@ -94,9 +94,9 @@ function firstClickPlay(element) {
     element.onmouseup = () => playAudio(click2);
 }
 
-function frameLoadedCallback(page) {
+function frameLoadedCallback() {
     controlsEnabled = true;
-    playPause(!play, page_tracks[page]);
+    playPause(!play, page_tracks[currentPage]);
 }
 
 function goToPage(page) {
@@ -106,6 +106,7 @@ function goToPage(page) {
     controlsEnabled = false;
     iframe.src = "pages/" + page + ".html";
     currentPage = page;
+
 }
 
 function formatTrack(track) {
@@ -131,6 +132,13 @@ function hideTitle(){
 }
 
 function playPause(toggle=play, track=currentTrack) {
+    let changed = false;
+    if (track != currentTrack) {
+        changed = true;
+        currentTrack = track;
+        source.src = "res/mus/" + tracks[currentTrack].file_name;
+        music.load();
+    }
 
     if (!controlsEnabled)
         return;
@@ -142,13 +150,9 @@ function playPause(toggle=play, track=currentTrack) {
     }
     else {
         music_base.classList.add("player-play");
-        if (track != currentTrack) {
-            currentTrack = track;
-            source.src = "res/mus/" + tracks[currentTrack].file_name;
-            music.load();
-        }
         music.play().catch(() => {});
-        showTitle();
+        if(changed)
+            showTitle();
         play = true
     }
 }
