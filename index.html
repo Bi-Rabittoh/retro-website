@@ -17,54 +17,53 @@
     </div>
     <div id="main-container">
         <div class="center" style="padding-top:30px;">
-            <a onclick="goToPage('about')">
+            <a onmousedown="goToPage('about')">
                 <img src="res/gif/text.gif" alt="BiRabittoh's cool website" class="hover-tilt">
             </a>
         </div>
         <div id="menu-div" class="shadow">
             <h1 style="margin-top:0px;">My favorite things:</h1>
-            <a onclick="goToPage('earthbound')">
+            <a onmousedown="goToPage('earthbound')">
                 <div class="menu-item">
                     <span>Earthbound</span>
                     <img src="res/gif/ness1.gif">
                 </div>
             </a>
-            <a onclick="goToPage('zelda')">
+            <a onmousedown="goToPage('zelda')">
                 <div class="menu-item">
                     <span>Zelda</span>
                     <img src="res/gif/linkmc.gif">
                 </div>
             </a>
-            <a onclick="goToPage('dragonquest')">
+            <a onmousedown="goToPage('dragonquest')">
                 <div class="menu-item">
                     <span>Dragon Quest</span>
                     <img src="res/gif/slime1.gif">
                 </div>
             </a>
-            <a onclick="goToPage('indies')">
+            <a onmousedown="goToPage('indies')">
                 <div class="menu-item">
                     <span>Indies</span>
                     <img src="res/gif/tutoriel.gif">
                 </div>
             </a>
-            <a onclick="goToPage('anime')">
+            <a onmousedown="goToPage('anime')">
                 <div class="menu-item">
                     <span>Anime</span>
                     <img src="res/gif/jojo.gif">
                 </div>
             </a>
-            <a onclick="goToPage('gf')">
+            <a onmousedown="goToPage('gf')">
                 <div class="menu-item">
                     <span>My perfect gf</span>
                     <img src="res/gif/kirby.gif">
                 </div>
             </a>
         </div>
-        <!--<iframe id="mainframe" name="content" src="pages/about.html" onload="this.height = (this.contentWindow.document.body.scrollHeight + 43) + 'px';"></iframe>-->
         <iframe id="mainframe" name="content" src="pages/about.html"></iframe>
     </div>
-    <div id="music-player" onmouseenter="showTitle()" onmouseleave="hideTitle()" style="bottom: -100%">
-        <div id="music-player-base" onclick="playPause()">
+    <div id="music-player" onmouseenter="showTitle()" style="bottom: -100%">
+        <div id="music-player-base" onmousedown="playPause()">
             <div id="music-player-overlay"></div>
         </div>
         <div id="music-player-song" style="top: 100%;">
