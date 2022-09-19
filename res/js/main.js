@@ -24,9 +24,9 @@ function firstClickPlay(element) {
     const overlay = document.getElementById("overlay");
     if(overlay) {
         overlay.remove();
+        // load this window
         hide_all();
         start_loading(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
-        //slow_load(speed=loadSpeed, not_allowed, () => { loadIFrame(firstPlay) });
     }
 
     click1 = clickAudio1 || parent.clickAudio1;
@@ -48,6 +48,7 @@ function goToPage(page) {
     music.pause()
     controlsEnabled = false;
     iframe.src = "pages/" + page + ".html";
+    iframe.onload = () => { loadIFrame(frameLoadedCallback); };
     currentPage = page;
 
 }

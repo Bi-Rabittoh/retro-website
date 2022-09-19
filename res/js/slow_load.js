@@ -21,7 +21,7 @@ const all = document.getElementsByTagName("*");
 let total = 0;
 
 function hide_all() {
-
+    total = 0;
     for (i in all) {
         const node = all[i];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
@@ -34,23 +34,24 @@ function hide_all() {
 
 function start_loading(speed, not_allowed=[], callback) {
 
+    let counter = 0;
+    let i = 0;
+
     function onNodeLoaded(node){
+        
         node.style.display = node.getAttribute("data-display");
         counter++;
-        ratio = counter / total * 100;
+        const ratio = counter / total * 100;
         
         playAudio(loadAudio[getRandomInt(0, loadAudio.length - 1)]);
-    
+        
         if (ratio >= 100 && callback)
             callback()
     }
     
-    let counter = 0;
-    let i = 0;
     for (element in all) {
         const node = all[element];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
-
             i += getRandomInt(250 / speed, 500 / speed);
             setTimeout(() => { onNodeLoaded(node);}, i);
         }

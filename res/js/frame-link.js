@@ -34,13 +34,23 @@ window.addEventListener("popstate", function (e) {
     }
 });
 
+function goToPageInitial(page) {
+    
+}
+
 //Checks to see if a page parameter exists and sets the mainframe src to that page.
 function setMainFrame() {
     let params = new URLSearchParams(window.location.search);
     let page = params.get(pageParam);
-    if (page != null) {
-        mainFrame.src = page;
-    }
+    if (page == null) return;
+    
+    music.pause()
+    controlsEnabled = false;
+    iframe.src = page;
+
+    page_key = page.split("/")[2].split(".")[0];
+    currentPage = page_key;
+
 }
 
 //Updates the browser history with the current page, causing the URL bar to update.
