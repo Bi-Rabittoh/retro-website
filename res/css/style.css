@@ -19,10 +19,10 @@ html {
     font-family: "04b_03";
     color: white;
     cursor: url("../cur/cursor2x.cur"), auto;
+    text-shadow: 1px 1px #000000;
 }
 
 #mainframe {
-    height: inherit;
     width: 100%;
     border: 0px;
     cursor: url("../cur/cursor2x.cur"), auto;
@@ -34,10 +34,6 @@ a {
 
 img {
     image-rendering: pixelated;
-}
-
-.center {
-    text-align: center;
 }
 
 .hover-tilt {
@@ -53,10 +49,6 @@ img {
     height: 100%;
     width: 800px;
     margin: auto;
-}
-
-.shadow {
-    text-shadow: 1px 1px #000000;
 }
 
 #menu-div {
@@ -137,3 +129,80 @@ img {
     cursor: url("../cur/pointer2x.cur"), auto;
     background-size: contain;
 }
+
+/* PAGES STUFF */
+.full-width {
+    left: 50px;
+    width: 700px;
+}
+
+.half-width {
+    width: 300px;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: left;
+}
+
+.tilt-right {
+    rotate: 2deg;
+}
+
+.tilt-left {
+    rotate: -2deg;
+}
+
+.tilt-45 {
+    rotate: 45deg;
+}
+
+.flip-x {
+    transform: scaleX(-1);
+}
+
+.flip-y {
+    transform: scaleY(-1);
+}
+
+.white-shadow {
+    text-shadow: 1px 1px white;
+}
+
+.deeppink {
+    color: deeppink;
+}
+
+.mediumvioletred {
+    color: mediumvioletred;
+}
+
+.el {
+    position: absolute;
+    overflow-wrap: break-word;
+    font-size: large;
+    line-height: 25px;
+}
+
+.up-down {
+    animation: MoveUpDown 3s linear infinite;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+  
+@keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 10px;
+    }
+  }

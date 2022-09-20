@@ -10,77 +10,55 @@
 </head>
 
 <body style='background-image: url("res/img/background.jpg"); height: 100%;'>
-    <div id="overlay">
-        <div style="margin:auto;">
-            Click here to enter.
-        </div>
-    </div>
     <div id="main-container">
         <div class="center" style="padding-top:30px;">
-            <a onmousedown="goToPage('about')">
+            <a href="pages/about.html" target="content">
                 <img src="res/gif/index/text.gif" alt="BiRabittoh's cool website" class="hover-tilt">
             </a>
         </div>
         <div id="menu-div" class="shadow">
             <h1 style="margin-top:0px;">My favorite things:</h1>
-            <a onmousedown="goToPage('earthbound')">
+            <a href="pages/earthbound.html" target="content">
                 <div class="menu-item">
                     <span>Earthbound</span>
                     <img src="res/gif/index/ness1.gif">
                 </div>
             </a>
-            <a onmousedown="goToPage('zelda')">
+            <a href="pages/zelda.html" target="content">
                 <div class="menu-item">
                     <span>Zelda</span>
                     <img src="res/gif/index/linkmc.gif">
                 </div>
             </a>
-            <a onmousedown="goToPage('dragonquest')">
+            <a href="pages/dragonquest.html" target="content">
                 <div class="menu-item">
                     <span>Dragon Quest</span>
                     <img src="res/gif/index/slime1.gif">
                 </div>
             </a>
-            <a onmousedown="goToPage('indies')">
+            <a href="pages/indies.html" target="content">
                 <div class="menu-item">
                     <span>Indies</span>
                     <img src="res/gif/index/tutoriel.gif">
                 </div>
             </a>
-            <a onmousedown="goToPage('anime')">
+            <a href="pages/anime.html" target="content">
                 <div class="menu-item">
                     <span>Anime</span>
                     <img src="res/gif/index/jojo.gif">
                 </div>
             </a>
-            <a onmousedown="goToPage('gf')">
+            <a href="pages/gf.html" target="content">
                 <div class="menu-item">
                     <span>My perfect gf</span>
                     <img src="res/gif/index/kirby.gif">
                 </div>
             </a>
         </div>
-        <iframe id="mainframe" name="content" src="pages/about.html" height="1"></iframe>
+        <iframe scrolling="no" id="mainframe" name="content" src="pages/about.html" height="1000"></iframe>
     </div>
-    <div id="music-player" onmouseenter="showTitle()" style="bottom: -100%">
-        <div id="music-player-base" onmousedown="playPause()">
-            <div id="music-player-overlay"></div>
-        </div>
-        <div id="music-player-song" style="top: 100%;">
-            <span id="song-text">Jay Tholen - Awesome Rap Beat (Hypnospace Outlaw Original Soundtrack, Vol. 2)</span>
-        </div>
-    </div>
-
-    <audio loop id="music"><source id="music-source" src="#"></audio>
-    <audio id="loadelement1"><source src="res/sfx/os/loadelement1.ogg"></audio>
-    <audio id="loadelement2"><source src="res/sfx/os/loadelement2.ogg"></audio>
-    <audio id="loadelement3"><source src="res/sfx/os/loadelement3.ogg"></audio>
-    <audio id="loadelement4"><source src="res/sfx/os/loadelement4.ogg"></audio>
-
-    <script src="res/js/music.js"></script>
-    <script src="res/js/slow_load.js"></script>
-    <script src="res/js/main.js"></script>
-    <script src="res/js/frame-link.js"></script>
+    <script>function firstClickPlay(){}</script>
+    <script src="res/js/frame-link-plain.js"></script>
 </body>
 
 </html>
