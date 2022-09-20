@@ -45,7 +45,6 @@ img {
 }
 
 #main-container {
-    /* width: calc(100% / 2); */
     height: 100%;
     width: 800px;
     margin: auto;
@@ -56,7 +55,7 @@ img {
     background-image: url("../img/orange-banner.jpg");
     background-size: cover;
     color: white;
-    padding:15px;
+    padding: 15px;
     margin-top: -18px;
 }
 

@@ -1,6 +1,6 @@
 const iframe = document.getElementById("mainframe");
 
-const loadSpeed = 2;
+const loadSpeed = 3;
 
 let first = false;
 let play = false;

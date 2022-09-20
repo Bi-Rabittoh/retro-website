@@ -26,8 +26,8 @@ function hide_all() {
         const node = all[i];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
             total++;
-            node.setAttribute("data-display", node.style.display);
-            node.style.display = "none";
+            node.setAttribute("data-opacity", node.style.opacity);
+            node.style.opacity = "0";
         }
     }
 }
@@ -38,8 +38,9 @@ function start_loading(speed, not_allowed=[], callback) {
     let i = 0;
 
     function onNodeLoaded(node){
+        node.style.transition = "opacity .3s ease-out";
+        node.style.opacity = node.getAttribute("data-opacity");
         
-        node.style.display = node.getAttribute("data-display");
         counter++;
         const ratio = counter / total * 100;
         
@@ -52,7 +53,7 @@ function start_loading(speed, not_allowed=[], callback) {
     for (element in all) {
         const node = all[element];
         if((node.childElementCount == 0) && (not_allowed.indexOf(node.tagName) === -1) && node.style){
-            i += getRandomInt(250 / speed, 500 / speed);
+            i += getRandomInt(100 / speed, 550 / speed);
             setTimeout(() => { onNodeLoaded(node);}, i);
         }
     }
