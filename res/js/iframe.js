@@ -3,13 +3,13 @@ if (!parent.location.href.includes("plain")) {
     hide_all();
 }
 const page_height = {
-    "about": 1500,
-    "anime": 1000,
-    "dragonquest": 1000,
-    "earthbound": 1000,
+    "about": 300,
+    "anime": 300,
+    "dragonquest": 300,
+    "earthbound": 300,
     "gf": 1600,
-    "indies": 1000,
-    "zelda": 1000
+    "indies": 700,
+    "zelda": 300
 }
 
 const page = document.body.getAttribute("data-page");
